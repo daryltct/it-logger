@@ -15,11 +15,11 @@
       "id": 2
     },
     {
-      "message": "Wireless network in zone 3 is down",
-      "attention": true,
+      "message": "Fixed wireless network in zone 5",
+      "attention": false,
       "tech": "Test 2",
-      "date": "2021-07-31T23:06:03.846Z",
-      "id": 3
+      "id": 3,
+      "date": "2021-07-31T23:42:23.650Z"
     }
   ],
   "techs": [
