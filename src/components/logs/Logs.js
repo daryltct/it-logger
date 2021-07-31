@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import LogItem from './LogItem'
-import Loader from './layout/Loader'
+import Loader from '../layout/Loader'
 
 const Logs = () => {
 	const [ logs, setLogs ] = useState([])
