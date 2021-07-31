@@ -6,7 +6,7 @@ const modalStyle = {
 	height: '75%'
 }
 
-const AddLogModal = () => {
+const EditLogModal = () => {
 	const [ formDetails, setFormDetails ] = useState({
 		message: '',
 		attention: false,
@@ -37,7 +37,7 @@ const AddLogModal = () => {
 	}
 
 	return (
-		<div id="add-log-modal" className="modal" style={modalStyle}>
+		<div id="edit-log-modal" className="modal" style={modalStyle}>
 			<div className="modal-content">
 				<h4>Enter System Log</h4>
 				{/* Log Message Input */}
@@ -98,4 +98,4 @@ const AddLogModal = () => {
 	)
 }
 
-export default AddLogModal
+export default EditLogModal
