@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js'
+
+import { addLog } from '../../actions/logActions'
 
 const modalStyle = {
 	width: '75%',
 	height: '75%'
 }
 
-const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
 	const [ formDetails, setFormDetails ] = useState({
 		message: '',
 		attention: false,
@@ -27,7 +31,15 @@ const AddLogModal = () => {
 		if (!message || !tech) {
 			M.toast({ html: 'Please enter a message and technician' })
 		} else {
-			console.log(message, attention, tech)
+			const newLog = {
+				...formDetails,
+				date: new Date()
+			}
+
+			addLog(newLog)
+			M.toast({ html: `Log added by ${tech}` })
+
+			// Clear input fields
 			setFormDetails({
 				message: '',
 				attention: false,
@@ -98,4 +110,8 @@ const AddLogModal = () => {
 	)
 }
 
-export default AddLogModal
+AddLogModal.propTypes = {
+	addLog: PropTypes.func.isRequired
+}
+
+export default connect(null, { addLog })(AddLogModal)
