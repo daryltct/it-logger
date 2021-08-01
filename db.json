@@ -1,25 +1,18 @@
 {
   "logs": [
     {
-      "message": "Increased RAM on workstation 009",
-      "attention": false,
-      "tech": "Test 1",
-      "date": "2021-07-31T23:04:32.184Z",
+      "message": "Network card failure on workstation 002",
+      "attention": true,
+      "tech": "Dom Drugan",
+      "date": "2021-08-01T00:33:44.642Z",
       "id": 1
     },
     {
-      "message": "Hard drive failed in workstation 002",
-      "attention": true,
-      "tech": "Test 1",
-      "date": "2021-07-31T23:05:22.889Z",
-      "id": 2
-    },
-    {
-      "message": "Fixed wireless network in zone 5",
+      "message": "Wireless network fixed at zone 4",
       "attention": false,
-      "tech": "Test 2",
-      "id": 3,
-      "date": "2021-07-31T23:42:23.650Z"
+      "tech": "Larry Leferson",
+      "date": "2021-08-01T00:34:04.089Z",
+      "id": 2
     }
   ],
   "techs": [

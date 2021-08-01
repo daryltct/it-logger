@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 import { updateLog } from '../../actions/logActions'
+import TechSelectOptions from '../tech/TechSelectOptions'
 
 const modalStyle = {
 	width: '75%',
@@ -79,8 +80,7 @@ const EditLogModal = ({ current, updateLog }) => {
 							<option value="" disabled>
 								Select Technician
 							</option>
-							<option value="Test 1">Test 1</option>
-							<option value="Test 2">Test 2</option>
+							<TechSelectOptions />
 						</select>
 					</div>
 				</div>
