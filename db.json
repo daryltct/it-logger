@@ -37,6 +37,11 @@
       "id": 3,
       "firstName": "Wallace",
       "lastName": "Wilkinson"
+    },
+    {
+      "firstName": "Gregory",
+      "lastName": "Gunkin",
+      "id": 4
     }
   ]
 }

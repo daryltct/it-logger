@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
+import { useTech, addTech } from '../../context/tech/TechContext'
+
 const AddTechModal = () => {
+	const [ , techDispatch ] = useTech()
+
 	const [ formDetails, setFormDetails ] = useState({
 		firstName: '',
 		lastName: ''
@@ -21,7 +25,9 @@ const AddTechModal = () => {
 		if (!firstName || !lastName) {
 			M.toast({ html: 'Please enter a first and last name' })
 		} else {
-			console.log(firstName, lastName)
+			addTech(techDispatch, formDetails)
+
+			// Clear input fields
 			setFormDetails({
 				firstName: '',
 				lastName: ''
