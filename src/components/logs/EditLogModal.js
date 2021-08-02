@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
+
+import { useLog, updateLog } from '../../context/log/LogContext'
 
 const modalStyle = {
 	width: '75%',
@@ -7,12 +9,29 @@ const modalStyle = {
 }
 
 const EditLogModal = () => {
+	const [ logState, logDispatch ] = useLog()
+	const { current } = logState
+
 	const [ formDetails, setFormDetails ] = useState({
 		message: '',
 		attention: false,
 		tech: ''
 	})
 	const { message, attention, tech } = formDetails
+
+	// prefill form details with selected (current) log
+	useEffect(
+		() => {
+			if (current) {
+				setFormDetails({
+					message: current.message,
+					attention: current.attention,
+					tech: current.tech
+				})
+			}
+		},
+		[ current ]
+	)
 
 	const inputChange = (e) => {
 		const { name, value } = e.target
@@ -27,7 +46,14 @@ const EditLogModal = () => {
 		if (!message || !tech) {
 			M.toast({ html: 'Please enter a message and technician' })
 		} else {
-			console.log(message, attention, tech)
+			const updatedLog = {
+				...formDetails,
+				id: current.id,
+				date: new Date()
+			}
+			updateLog(logDispatch, updatedLog)
+
+			// Clear input fields
 			setFormDetails({
 				message: '',
 				attention: false,
@@ -44,9 +70,6 @@ const EditLogModal = () => {
 				<div className="row">
 					<div className="input-field">
 						<input type="text" name="message" value={message} onChange={inputChange} />
-						<label htmlFor="message" className="active">
-							Log Message
-						</label>
 					</div>
 				</div>
 				{/* Select Technician Input */}

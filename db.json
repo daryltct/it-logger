@@ -8,11 +8,18 @@
       "id": 1
     },
     {
-      "message": "another one",
-      "attention": false,
+      "message": "Network card failure on workstation 004",
+      "attention": true,
       "tech": "Test 2",
-      "date": "2021-08-02T18:24:16.938Z",
-      "id": 2
+      "id": 2,
+      "date": "2021-08-02T18:40:01.120Z"
+    },
+    {
+      "message": "Fixed wireless network in zone 3",
+      "attention": false,
+      "tech": "Test 1",
+      "id": 3,
+      "date": "2021-08-02T18:40:35.371Z"
     }
   ],
   "techs": [
