@@ -1,10 +1,10 @@
 {
   "logs": [
     {
-      "message": "Update memory card on workstation 004",
+      "message": "wow it works",
       "attention": true,
-      "tech": "Test 1",
-      "date": "2021-08-02T18:00:15.313Z",
+      "tech": "Test 2",
+      "date": "2021-08-02T18:15:58.318Z",
       "id": 1
     }
   ],
