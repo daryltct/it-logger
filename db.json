@@ -1,13 +1,6 @@
 {
   "logs": [
     {
-      "message": "wow it works",
-      "attention": true,
-      "tech": "Test 2",
-      "date": "2021-08-02T18:15:58.318Z",
-      "id": 1
-    },
-    {
       "message": "Network card failure on workstation 004",
       "attention": true,
       "tech": "Test 2",
@@ -20,6 +13,13 @@
       "tech": "Test 1",
       "id": 3,
       "date": "2021-08-02T18:40:35.371Z"
+    },
+    {
+      "message": "Monitor screen spoilt on workstation 020",
+      "attention": true,
+      "tech": "Test 1",
+      "date": "2021-08-02T20:33:03.487Z",
+      "id": 4
     }
   ],
   "techs": [

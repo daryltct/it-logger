@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
 
 import { useLog, getLogs } from '../../context/log/LogContext'
+import { useTech, getTechs } from '../../context/tech/TechContext'
 import LogItem from './LogItem'
 import Loader from '../layout/Loader'
 
 const Logs = () => {
-	const [ logState, logDispatch ] = useLog()
-	const { logs, loading } = logState
+	const [ { logs, loading: logsLoading }, logDispatch ] = useLog()
+	const [ { loading: techsLoading }, techDispatch ] = useTech()
 
 	useEffect(
 		() => {
 			getLogs(logDispatch)
+			getTechs(techDispatch)
 		},
-		[ logDispatch ]
+		[ logDispatch, techDispatch ]
 	)
 
-	if (loading || !logs) {
+	if (logsLoading || techsLoading || !logs) {
 		return <Loader />
 	}
 
@@ -24,7 +26,7 @@ const Logs = () => {
 			<li className="collection-header">
 				<h4 className="center">System Logs</h4>
 			</li>
-			{!loading && logs.length === 0 ? (
+			{!logsLoading && logs.length === 0 ? (
 				<p className="center">No Logs</p>
 			) : (
 				logs.map((log) => <LogItem log={log} key={log.id} />)
