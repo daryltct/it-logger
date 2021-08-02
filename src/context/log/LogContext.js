@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from 'react'
 import axios from 'axios'
 
 import logReducer from './logReducer'
-import { GET_LOGS, ADD_LOG, SET_LOADING, LOGS_ERROR } from '../actionTypes'
+import { GET_LOGS, ADD_LOG, DELETE_LOG, SET_LOADING, LOGS_ERROR } from '../actionTypes'
 
 const LogContext = createContext()
 
@@ -49,6 +49,18 @@ export const addLog = async (dispatch, log) => {
 
 		const res = await axios.post('/logs', log)
 		dispatch({ type: ADD_LOG, payload: res.data })
+	} catch (err) {
+		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
+	}
+}
+
+// Delete log from server
+export const deleteLog = async (dispatch, logId) => {
+	try {
+		setLoading(dispatch)
+
+		await axios.delete(`/logs/${logId}`)
+		dispatch({ type: DELETE_LOG, payload: logId })
 	} catch (err) {
 		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
 	}
