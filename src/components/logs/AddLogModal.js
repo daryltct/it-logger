@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
+import { useLog, addLog } from '../../context/log/LogContext'
+
 const modalStyle = {
 	width: '75%',
 	height: '75%'
 }
 
 const AddLogModal = () => {
+	const [ , logDispatch ] = useLog()
+
 	const [ formDetails, setFormDetails ] = useState({
 		message: '',
 		attention: false,
@@ -27,7 +31,13 @@ const AddLogModal = () => {
 		if (!message || !tech) {
 			M.toast({ html: 'Please enter a message and technician' })
 		} else {
-			console.log(message, attention, tech)
+			const newLog = {
+				...formDetails,
+				date: new Date()
+			}
+			addLog(logDispatch, newLog)
+
+			// Clear input fields
 			setFormDetails({
 				message: '',
 				attention: false,
