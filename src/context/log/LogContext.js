@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from 'react'
 import axios from 'axios'
 
 import logReducer from './logReducer'
-import { GET_LOGS, ADD_LOG, DELETE_LOG, SET_LOADING, LOGS_ERROR } from '../actionTypes'
+import { GET_LOGS, ADD_LOG, DELETE_LOG, SET_CURRENT, SET_LOADING, LOGS_ERROR } from '../actionTypes'
 
 const LogContext = createContext()
 
@@ -64,6 +64,11 @@ export const deleteLog = async (dispatch, logId) => {
 	} catch (err) {
 		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
 	}
+}
+
+// Set current log
+export const setCurrent = (dispatch, log) => {
+	dispatch({ type: SET_CURRENT, payload: log })
 }
 
 // Set loading
