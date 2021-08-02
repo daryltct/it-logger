@@ -1,4 +1,4 @@
-import { GET_TECHS, SET_LOADING, TECHS_ERROR } from '../actionTypes'
+import { GET_TECHS, ADD_TECH, SET_LOADING, TECHS_ERROR } from '../actionTypes'
 
 const techReducer = (state, action) => {
 	switch (action.type) {
@@ -6,6 +6,12 @@ const techReducer = (state, action) => {
 			return {
 				...state,
 				techs: action.payload,
+				loading: false
+			}
+		case ADD_TECH:
+			return {
+				...state,
+				techs: [ ...state.techs, action.payload ],
 				loading: false
 			}
 		case SET_LOADING:

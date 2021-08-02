@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer } from 'react'
 import axios from 'axios'
 
 import techReducer from './techReducer'
-import { GET_TECHS, SET_LOADING, TECHS_ERROR } from '../actionTypes'
+import { GET_TECHS, ADD_TECH, SET_LOADING, TECHS_ERROR } from '../actionTypes'
 
 const TechContext = createContext()
 
@@ -36,6 +36,18 @@ export const getTechs = async (dispatch) => {
 
 		const res = await axios.get('/techs')
 		dispatch({ type: GET_TECHS, payload: res.data })
+	} catch (err) {
+		techsError(dispatch, err.response.statusText)
+	}
+}
+
+// Add tech to server
+export const addTech = async (dispatch, tech) => {
+	try {
+		setLoading(dispatch)
+
+		const res = await axios.post('/techs', tech)
+		dispatch({ type: ADD_TECH, payload: res.data })
 	} catch (err) {
 		techsError(dispatch, err.response.statusText)
 	}
