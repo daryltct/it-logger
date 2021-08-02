@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 
+import { useTech, getTechs } from '../../context/tech/TechContext'
 import TechItem from './TechItem'
 
 const TechListModal = () => {
-	const [ techs, setTechs ] = useState([])
-	const [ loading, setLoading ] = useState(false)
+	const [ techState, techDispatch ] = useTech()
+	const { techs, loading } = techState
 
-	useEffect(() => {
-		getTechs()
-	}, [])
-
-	const getTechs = async () => {
-		try {
-			setLoading(true)
-			const res = await axios.get('/techs')
-			setTechs(res.data)
-			setLoading(false)
-		} catch (err) {
-			console.log(err)
-		}
-	}
+	useEffect(
+		() => {
+			getTechs(techDispatch)
+		},
+		[ techDispatch ]
+	)
 
 	return (
 		<div id="tech-list-modal" className="modal">
 			<div className="modal-content">
 				<h4>Technician List</h4>
 				<ul className="collection">
-					{!loading && techs.map((tech) => <TechItem tech={tech} key={tech.id} />)}
+					{!loading && techs && techs.map((tech) => <TechItem tech={tech} key={tech.id} />)}
 				</ul>
 			</div>
 		</div>
