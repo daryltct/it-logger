@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 
-import { useLog, deleteLog } from '../../context/log/LogContext'
+import { useLog, deleteLog, setCurrent } from '../../context/log/LogContext'
 
 const LogItem = ({ log }) => {
 	const [ , logDispatch ] = useLog()
@@ -11,10 +11,18 @@ const LogItem = ({ log }) => {
 		deleteLog(logDispatch, log.id)
 	}
 
+	const onSelect = () => {
+		setCurrent(logDispatch, log)
+	}
+
 	return (
 		<li className="collection-item">
 			<div>
-				<a href="#edit-log-modal" className={`modal-trigger ${log.attention ? 'red-text' : 'black-text'}`}>
+				<a
+					href="#edit-log-modal"
+					className={`modal-trigger ${log.attention ? 'red-text' : 'black-text'}`}
+					onClick={onSelect}
+				>
 					{log.message}
 				</a>
 				<br />
