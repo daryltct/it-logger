@@ -1,11 +1,11 @@
 {
   "logs": [
     {
-      "message": "Increase RAM on workstation 022",
+      "message": "Increased RAM on workstation 022",
       "attention": true,
-      "tech": "Larry Leferson",
+      "tech": "Gregory Gunkin",
       "id": 5,
-      "date": "2021-08-02T20:53:10.786Z"
+      "date": "2021-08-02T21:11:16.169Z"
     },
     {
       "message": "Motherboard failure on workstation 033",
@@ -24,16 +24,6 @@
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "Larry",
-      "lastName": "Leferson"
-    },
-    {
-      "id": 2,
-      "firstName": "Dom",
-      "lastName": "Drugan"
-    },
-    {
       "id": 3,
       "firstName": "Wallace",
       "lastName": "Wilkinson"
@@ -42,6 +32,16 @@
       "firstName": "Gregory",
       "lastName": "Gunkin",
       "id": 4
+    },
+    {
+      "firstName": "Larry",
+      "lastName": "Lefurson",
+      "id": 5
+    },
+    {
+      "firstName": "Dom",
+      "lastName": "Drugan",
+      "id": 6
     }
   ]
 }
