@@ -1,25 +1,25 @@
 {
   "logs": [
     {
-      "message": "Network card failure on workstation 004",
+      "message": "Increase RAM on workstation 022",
       "attention": true,
-      "tech": "Test 2",
-      "id": 2,
-      "date": "2021-08-02T18:40:01.120Z"
+      "tech": "Larry Leferson",
+      "id": 5,
+      "date": "2021-08-02T20:53:10.786Z"
     },
     {
-      "message": "Fixed wireless network in zone 3",
-      "attention": false,
-      "tech": "Test 1",
-      "id": 3,
-      "date": "2021-08-02T18:40:35.371Z"
+      "message": "Motherboard failure on workstation 033",
+      "attention": true,
+      "tech": "Wallace Wilkinson",
+      "date": "2021-08-02T20:51:30.290Z",
+      "id": 6
     },
     {
-      "message": "Monitor screen spoilt on workstation 020",
+      "message": "Network card failure on workstation 005",
       "attention": true,
-      "tech": "Test 1",
-      "date": "2021-08-02T20:33:03.487Z",
-      "id": 4
+      "tech": "Dom Drugan",
+      "date": "2021-08-02T20:52:59.921Z",
+      "id": 7
     }
   ],
   "techs": [
