@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from 'react'
 import axios from 'axios'
 
 import logReducer from './logReducer'
-import { GET_LOGS, SET_LOADING, LOGS_ERROR } from '../actionTypes'
+import { GET_LOGS, ADD_LOG, SET_LOADING, LOGS_ERROR } from '../actionTypes'
 
 const LogContext = createContext()
 
@@ -39,6 +39,18 @@ export const getLogs = async (dispatch) => {
 		dispatch({ type: GET_LOGS, payload: res.data })
 	} catch (err) {
 		logsError(dispatch, err.response.statusText)
+	}
+}
+
+// Add log to server
+export const addLog = async (dispatch, log) => {
+	try {
+		setLoading(dispatch)
+
+		const res = await axios.post('/logs', log)
+		dispatch({ type: ADD_LOG, payload: res.data })
+	} catch (err) {
+		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
 	}
 }
 

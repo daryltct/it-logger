@@ -1,4 +1,4 @@
-import { GET_LOGS, SET_LOADING, LOGS_ERROR } from '../actionTypes'
+import { GET_LOGS, ADD_LOG, SET_LOADING, LOGS_ERROR } from '../actionTypes'
 
 const logReducer = (state, action) => {
 	switch (action.type) {
@@ -6,6 +6,12 @@ const logReducer = (state, action) => {
 			return {
 				...state,
 				logs: action.payload,
+				loading: false
+			}
+		case ADD_LOG:
+			return {
+				...state,
+				logs: [ ...state.logs, action.payload ],
 				loading: false
 			}
 		case SET_LOADING:
