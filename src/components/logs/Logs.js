@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 
+import { useLog, getLogs } from '../../context/log/LogContext'
 import LogItem from './LogItem'
 import Loader from '../layout/Loader'
 
 const Logs = () => {
-	const [ logs, setLogs ] = useState([])
-	const [ loading, setLoading ] = useState(false)
+	const [ logState, logDispatch ] = useLog()
+	const { logs, loading } = logState
 
-	useEffect(() => {
-		getLogs()
-	}, [])
+	useEffect(
+		() => {
+			getLogs(logDispatch)
+		},
+		[ logDispatch ]
+	)
 
-	const getLogs = async () => {
-		try {
-			setLoading(true)
-			const res = await axios.get('/logs')
-			setLogs(res.data)
-			setLoading(false)
-		} catch (err) {
-			console.log(err)
-		}
-	}
-
-	if (loading) {
+	if (loading || !logs) {
 		return <Loader />
 	}
 
