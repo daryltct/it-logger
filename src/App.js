@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
@@ -10,6 +10,7 @@ import AddLogModal from './components/logs/AddLogModal'
 import EditLogModal from './components/logs/EditLogModal'
 import AddTechModal from './components/tech/AddTechModal'
 import TechListModal from './components/tech/TechListModal'
+import LogContextProvider from './context/log/LogContext'
 
 const App = () => {
 	useEffect(() => {
@@ -17,7 +18,7 @@ const App = () => {
 	})
 
 	return (
-		<Fragment>
+		<LogContextProvider>
 			<SearchBar />
 			<div className="container">
 				<Logs />
@@ -27,7 +28,7 @@ const App = () => {
 				<AddTechModal />
 				<TechListModal />
 			</div>
-		</Fragment>
+		</LogContextProvider>
 	)
 }
 
