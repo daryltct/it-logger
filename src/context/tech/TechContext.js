@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react'
+import axios from 'axios'
 
 import techReducer from './techReducer'
+import { GET_TECHS, SET_LOADING, TECHS_ERROR } from '../actionTypes'
 
 const TechContext = createContext()
 
@@ -24,3 +26,27 @@ const TechContextProvider = (props) => {
 }
 
 export default TechContextProvider
+
+// ACTION CREATORS
+
+// Get techs from server
+export const getTechs = async (dispatch) => {
+	try {
+		setLoading(dispatch)
+
+		const res = await axios.get('/techs')
+		dispatch({ type: GET_TECHS, payload: res.data })
+	} catch (err) {
+		techsError(dispatch, err.response.statusText)
+	}
+}
+
+// Set loading
+export const setLoading = (dispatch) => {
+	dispatch({ type: SET_LOADING })
+}
+
+// Logs error
+export const techsError = (dispatch, errorMsg) => {
+	dispatch({ type: TECHS_ERROR, payload: errorMsg })
+}
