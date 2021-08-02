@@ -59,7 +59,7 @@ export const addLog = async (dispatch, log) => {
 		const res = await axios.post('/logs', log)
 		dispatch({ type: ADD_LOG, payload: res.data })
 	} catch (err) {
-		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
+		logsError(dispatch, err.response.statusText)
 	}
 }
 
@@ -71,7 +71,7 @@ export const deleteLog = async (dispatch, logId) => {
 		await axios.delete(`/logs/${logId}`)
 		dispatch({ type: DELETE_LOG, payload: logId })
 	} catch (err) {
-		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
+		logsError(dispatch, err.response.statusText)
 	}
 }
 
@@ -83,7 +83,7 @@ export const updateLog = async (dispatch, log) => {
 		const res = await axios.put(`/logs/${log.id}`, log)
 		dispatch({ type: UPDATE_LOG, payload: res.data })
 	} catch (err) {
-		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
+		logsError(dispatch, err.response.statusText)
 	}
 }
 
@@ -95,7 +95,7 @@ export const searchLogs = async (dispatch, query) => {
 		const res = await axios.get(`/logs/?q=${query}`)
 		dispatch({ type: SEARCH_LOGS, payload: res.data })
 	} catch (err) {
-		dispatch({ type: LOGS_ERROR, payload: err.response.statusText })
+		logsError(dispatch, err.response.statusText)
 	}
 }
 
