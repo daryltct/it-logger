@@ -11,6 +11,7 @@ import EditLogModal from './components/logs/EditLogModal'
 import AddTechModal from './components/tech/AddTechModal'
 import TechListModal from './components/tech/TechListModal'
 import LogContextProvider from './context/log/LogContext'
+import TechContextProvider from './context/tech/TechContext'
 
 const App = () => {
 	useEffect(() => {
@@ -18,17 +19,19 @@ const App = () => {
 	})
 
 	return (
-		<LogContextProvider>
-			<SearchBar />
-			<div className="container">
-				<Logs />
-				<AddButton />
-				<AddLogModal />
-				<EditLogModal />
-				<AddTechModal />
-				<TechListModal />
-			</div>
-		</LogContextProvider>
+		<TechContextProvider>
+			<LogContextProvider>
+				<SearchBar />
+				<div className="container">
+					<Logs />
+					<AddButton />
+					<AddLogModal />
+					<EditLogModal />
+					<AddTechModal />
+					<TechListModal />
+				</div>
+			</LogContextProvider>
+		</TechContextProvider>
 	)
 }
 
